@@ -1,0 +1,74 @@
+import EnfermedadViral.*
+import EnfermedadAutoinmune.*
+import Persona.*
+
+describe "Enfermedades" {
+	var malaria500
+	var malaria800
+	var otitis100
+	var lupus
+	var logan
+	var frank
+	var cont
+	method initialize() {
+		malaria500 = new EnfermedadViral(cantidadDeCelulasAmenazadas = 500, afecto = 0)
+		malaria800 = new EnfermedadViral(cantidadDeCelulasAmenazadas = 800, afecto = 0)
+		otitis100  = new EnfermedadViral(cantidadDeCelulasAmenazadas = 100, afecto = 0)
+		lupus      = new EnfermedadAutoinmune(cantidadDeCelulasAmenazadas = 10000)
+		logan      = new Persona(temperaturaNormal = 36, celulas = 3000000, enfermedades = [malaria500, otitis100, lupus])
+		frank      = new Persona(temperaturaNormal = 36, celulas = 3500000, enfermedades = [])
+		cont = 0
+	}
+	
+	test "Punto 1" {
+		frank.contraerEnfermedad(lupus)
+		assert.equals([lupus], frank.enfermedades())
+	}
+	test "Punto 2" {
+		malaria500.reproducirse()
+		assert.equals(1000, malaria500.cantidadDeCelulasAmenazadas())
+	}
+	test "Punto 3" {
+		logan.diaEnfermo()
+		assert.equals(lupus, logan.enfermedadMasGrave())
+		assert.equals(false, logan.estaEnComa())
+		assert.equals([], logan.enfermedadesAgresivas())
+	}
+	test "Punto 4" {
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		logan.diaEnfermo()
+		assert.equals(malaria500, logan.enfermedadMasGrave())
+		assert.equals(true, logan.estaEnComa())
+		assert.equals([malaria500, otitis100, lupus], logan.enfermedadesAgresivas())
+	}
+}
+
