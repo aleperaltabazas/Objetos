@@ -3,7 +3,7 @@ class Persona {
 	var celulas
 	var enfermedades = []
 	
-	method diaEnfermo() {
+	method diaEnfermo() { // enfermedad.afectarA(self)
 		enfermedades.forEach{ enfermedad => self.sufrirSintomas(enfermedad)}
 	}
 	method sufrirSintomas(unaEnfermedad) {
