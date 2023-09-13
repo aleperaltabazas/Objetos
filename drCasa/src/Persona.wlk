@@ -3,18 +3,14 @@ class Persona {
 	var celulas
 	var enfermedades = []
 	
-	method diaEnfermo() { // enfermedad.afectarA(self)
-		enfermedades.forEach{ enfermedad => self.sufrirSintomas(enfermedad)}
-	}
-	method sufrirSintomas(unaEnfermedad) {
-		self.aumentarTemperatura(unaEnfermedad.fiebre())
-		self.afectarCelulas(unaEnfermedad.afectarCelulas())
+	method diaEnfermo() { 
+		enfermedades.forEach{ enfermedad => enfermedad.afectarA(self)}
 	}
 	method aumentarTemperatura(unosGrados) {
-		temperaturaNormal += unosGrados
+		temperaturaNormal = 45.min(temperaturaNormal  + unosGrados)
 	}
 	method afectarCelulas(unaCantidadCelulas) {
-		celulas -= unaCantidadCelulas
+		celulas = 0.max(celulas - unaCantidadCelulas)
 	}
 	method contraerEnfermedad(unaEnfermedad) {
 		enfermedades.add(unaEnfermedad)
