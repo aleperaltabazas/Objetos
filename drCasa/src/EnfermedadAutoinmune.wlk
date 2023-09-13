@@ -5,9 +5,7 @@ class EnfermedadAutoinmune {
 	method fiebre() {
 		return 0
 	}
-	method afectarCelulas() {
-		afecto++
-		return cantidadDeCelulasAmenazadas
+	method afectarA(unaPersona){
 	}
 	
 	method esAgresiva(_) {
